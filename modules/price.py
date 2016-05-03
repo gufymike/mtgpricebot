@@ -170,7 +170,7 @@ def price(bot, trigger):
     try:
         card = None
         options = trigger.group(2).split(' !')
-        options = [x.encode('utf-8') for x in options]
+        options = [x.encode('utf-8').rstrip() for x in options]
         if len(options) > 1:
             print("Name and set passed in, try getting them directly.")
             name = options[0]
@@ -216,7 +216,7 @@ def define(bot, trigger):
     """
     try:
         option = trigger.group(2)
-        option = option.encode('utf-8')
+        option = option.encode('utf-8').rstrip()
         data = urllib2.urlopen('http://www.yawgatog.com/resources/magic-rules/')
         soup = BeautifulSoup(data)
         anchor_tag = soup.find('a', id=option)
@@ -238,7 +238,7 @@ def formats(bot, trigger):
     """
     try:
         option = trigger.group(2)
-        option = option.encode('utf-8')
+        option = option.encode('utf-8').rstrip()
         data = requests.get('http://api.deckbrew.com/mtg/cards?'+urllib.urlencode({'name': option})).json()
         if len(data) > 0:
             data = data[0]
