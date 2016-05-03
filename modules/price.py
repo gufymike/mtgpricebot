@@ -239,7 +239,7 @@ def formats(bot, trigger):
     try:
         option = trigger.group(2)
         option = option.encode('utf-8')
-        data = requests.get('https://api.deckbrew.com/mtg/cards?'+urllib.urlencode({'name': option})).json()
+        data = requests.get('http://api.deckbrew.com/mtg/cards?'+urllib.urlencode({'name': option})).json()
         if len(data) > 0:
             data = data[0]
             name = data['name']
