@@ -135,7 +135,7 @@ def get_deckbrew(input_name, input_set=None):
     To be used when the cache and mtgprice have failed. This should let us do
     some fuzzy name only matches.
     """
-    data = requests.get('https://api.deckbrew.com/mtg/cards?'+urllib.urlencode({'name': input_name})).json()
+    data = requests.get('http://api.deckbrew.com/mtg/cards?'+urllib.urlencode({'name': input_name})).json()
     card = None
     set_ret = None
     name_ret = None
